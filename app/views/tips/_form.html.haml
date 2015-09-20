@@ -1,0 +1,17 @@
+= form_for @tip do |f|
+  .errors
+    %ul
+      - @tip.errors.full_messages.each do |message|
+        %li= message
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :tag_list
+    = text_field_tag 'tip[tag_list]', @tip.tag_list.join(','), 'data-role' => 'tagsinput'
+  .field
+    = f.label :content
+    = f.text_area :content
+  .actions
+    = f.submit
+

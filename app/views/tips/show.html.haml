@@ -1,0 +1,14 @@
+- @title = 'tips詳細ページ'
+
+%h1= @tip.title
+%div
+  - @tip.tag_list.each do |tag|
+    %span.label.label-primary= tag
+%div= simple_format(h(@tip.content))
+= render 'comments/form'
+= render partial: 'comments/comment', collection: @comments
+
+= link_to "tips一覧", tips_url
+= link_to "編集する", edit_tip_path
+- if is_my_tip?(@tip)
+  = link_to "削除する", @tip, method: :delete, data: { confirm: '本当に削除しますか?'}
