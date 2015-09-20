@@ -63,7 +63,7 @@ class TipsController < ApplicationController
   end
 
   def tip_params
-    params.require(:tip).permit(:title, :content)
+    params.require(:tip).permit(:title, :content, :tag_list)
   end
 
 end

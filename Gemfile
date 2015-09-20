@@ -16,6 +16,7 @@ gem 'omniauth-twitter'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'config'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 
 group :development, :test do
