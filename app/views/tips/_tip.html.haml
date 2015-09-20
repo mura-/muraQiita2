@@ -1,0 +1,4 @@
+%div
+  %span.name= "#{tip.user.username}が#{time_ago_in_words (tip.created_at)}前に投稿しました"
+  %span.name= "が#{time_ago_in_words (tip.created_at)}前に投稿しました"
+  %span.title= link_to tip.title, tip_url(tip)

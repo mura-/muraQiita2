@@ -1,0 +1,7 @@
+%html
+  %head
+  %body
+    %h1 新しいコメントが投稿されました。
+    %p= @comment.content
+    = link_to '記事を見る', tip_url(@comment.tip_id)
+
