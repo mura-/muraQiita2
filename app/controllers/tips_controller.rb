@@ -57,6 +57,10 @@ class TipsController < ApplicationController
     @tips = current_user.tips
   end
 
+  def find_by_tags
+    @tips = Tip.tagged_with([params[:tag]], any: :true)
+  end
+
   private
   def set_tip
     @tip = Tip.find(params[:id])
