@@ -4,7 +4,7 @@
 %div
   - @tip.tag_list.each do |tag|
     %span.label.label-primary= tag
-%div= simple_format(h(@tip.content))
+%div= markdown(@tip.content)
 = render 'comments/form'
 = render partial: 'comments/comment', collection: @comments
 

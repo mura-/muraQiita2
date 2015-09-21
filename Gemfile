@@ -17,7 +17,10 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'config'
 gem 'acts-as-taggable-on', '~> 3.4'
-
+gem 'redcarpet'
+gem 'vuejs-rails'
+gem 'bootstrap-sass'
+gem 'marked-rails'
 
 group :development, :test do
   gem 'byebug'

@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require marked
+//= require vue
 //= require_tree .
 //= require bootstrap-tagsinput.min
