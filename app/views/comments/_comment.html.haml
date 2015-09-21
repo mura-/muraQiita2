@@ -1,2 +1,3 @@
 %div
-  %span.comment= comment.content
+  %span.comment= markdown(comment.content.to_s)
+

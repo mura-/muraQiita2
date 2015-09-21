@@ -9,9 +9,9 @@
   .field
     = f.label :tag_list
     = text_field_tag 'tip[tag_list]', @tip.tag_list.join(','), 'data-role' => 'tagsinput'
-  .field
+  #editor.field
     = f.label :content
-    = f.text_area :content
+    = f.text_area :content, 'v-model' => 'input', 'debounce' => '300'
+    %div(v-html='input | marked')
   .actions
     = f.submit
-
