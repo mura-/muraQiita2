@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :tips
   has_many :comments
+  has_many :stocks, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

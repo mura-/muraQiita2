@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
+
+  resource :users do
+    resources :stocks
+  end
+
   resources :tips do
     resources :comments, only: [ :create ]
   end
