@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   get 'mine' => 'tips#mine', as: :mine
   get 'find_by_tags/:tag' => 'tips#find_by_tags', as: :find_by_tags
 
+  resources :notifications, only: [ :index, :update ]
+
   root "tops#index"
 end

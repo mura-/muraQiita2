@@ -7,6 +7,8 @@
     - else
       = link_to 'サインアップ', new_user_registration_path
       = link_to 'ログイン', new_user_session_path
+    - if user_signed_in?
+      %div.notify= link_to "新着通知 #{unread_notifications.count} 件", notifications_path
     %p.notice= notice
     %p.alert= alert
 

@@ -4,11 +4,13 @@ class CommentsController < ApplicationController
     comment = tip.comments.build(comment_params)
     comment.user_id = current_user.id
     if comment.save
-      notification = Notification.new()
-      notification.notify_comments = comment
-      notification.save
       flash.notice = 'コメントが投稿されました'
-      PostMailer.notification_comment(current_user, comment).deliver if !is_my_tip?(tip) 
+      if !is_my_tip?(tip) 
+        notification = Notification.new()
+        notification.notify_comments = comment
+        notification.save
+        PostMailer.notification_comment(tip.user, comment).deliver
+      end
     else
       flash.alert = 'コメントが投稿できませんでした。もう一度お試しください。'
     end
