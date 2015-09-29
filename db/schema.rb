@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150920112211) do
+ActiveRecord::Schema.define(version: 20150929192207) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4,     null: false
@@ -23,6 +23,27 @@ ActiveRecord::Schema.define(version: 20150920112211) do
 
   add_index "comments", ["tip_id", "user_id"], name: "index_comments_on_tip_id_and_user_id", using: :btree
   add_index "comments", ["user_id"], name: "fk_rails_03de2dc08c", using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id",       limit: 4,                     null: false
+    t.text     "content",       limit: 65535,                 null: false
+    t.boolean  "is_checked",                  default: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.string   "reference_url", limit: 255
+  end
+
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+
+  create_table "stocks", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4, null: false
+    t.integer  "tip_id",     limit: 4, null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "stocks", ["tip_id"], name: "index_stocks_on_tip_id", using: :btree
+  add_index "stocks", ["user_id"], name: "index_stocks_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",        limit: 4
@@ -84,4 +105,7 @@ ActiveRecord::Schema.define(version: 20150920112211) do
 
   add_foreign_key "comments", "tips"
   add_foreign_key "comments", "users"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "stocks", "tips"
+  add_foreign_key "stocks", "users"
 end
