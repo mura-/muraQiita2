@@ -8,6 +8,9 @@ class TipsController < ApplicationController
   def show
     @comments = @tip.comments
     @comment = @tip.comments.build
+    if user_signed_in?
+      @stock = current_user.stocks.find_by(tip_id: @tip)
+    end
   end
 
   def edit

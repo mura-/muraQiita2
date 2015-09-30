@@ -5,6 +5,11 @@
   - @tip.tag_list.each do |tag|
     %span.label.label-primary= tag
 %div= markdown(@tip.content)
+- if user_signed_in?
+  - if @stock.blank?
+    %div= button_to "ストックする", users_stocks_path(stock: {tip_id: @tip})
+  - else
+    %div= button_to "ストックを取り消す", users_stock_path(@stock), method: :delete
 = render 'comments/form'
 = render partial: 'comments/comment', collection: @comments
 

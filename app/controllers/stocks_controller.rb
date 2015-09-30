@@ -21,6 +21,6 @@ class StocksController < ApplicationController
 
   private
   def stock_params
-    params.require(:stock).permit(:tip_id)
+    params.require(:stock).permit(:user_id, :tip_id)
   end
 end

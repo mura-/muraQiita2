@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150929192207) do
+=======
+ActiveRecord::Schema.define(version: 20150927192633) do
+>>>>>>> feature/5-stocks
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4,     null: false
@@ -24,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150929192207) do
   add_index "comments", ["tip_id", "user_id"], name: "index_comments_on_tip_id_and_user_id", using: :btree
   add_index "comments", ["user_id"], name: "fk_rails_03de2dc08c", using: :btree
 
+<<<<<<< HEAD
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id",       limit: 4,                     null: false
     t.text     "content",       limit: 65535,                 null: false
@@ -35,6 +40,8 @@ ActiveRecord::Schema.define(version: 20150929192207) do
 
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
+=======
+>>>>>>> feature/5-stocks
   create_table "stocks", force: :cascade do |t|
     t.integer  "user_id",    limit: 4, null: false
     t.integer  "tip_id",     limit: 4, null: false
@@ -105,7 +112,10 @@ ActiveRecord::Schema.define(version: 20150929192207) do
 
   add_foreign_key "comments", "tips"
   add_foreign_key "comments", "users"
+<<<<<<< HEAD
   add_foreign_key "notifications", "users"
+=======
+>>>>>>> feature/5-stocks
   add_foreign_key "stocks", "tips"
   add_foreign_key "stocks", "users"
 end
