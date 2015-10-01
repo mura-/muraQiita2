@@ -1,8 +1,11 @@
 class StocksController < ApplicationController
+  include NotificationHandlers
+
   def create
     stock = current_user.stocks.new(stock_params)
     if stock.save
       flash.notice = 'ストックしました。'
+      notify_stocks(stock)    
     else
       flash.notice = 'ストックできませんでした。時間をおいてお試しください。'
     end

@@ -21,6 +21,7 @@ gem 'redcarpet'
 gem 'vuejs-rails'
 gem 'bootstrap-sass'
 gem 'marked-rails'
+gem 'activerecord-import'
 
 group :development, :test do
   gem 'byebug'

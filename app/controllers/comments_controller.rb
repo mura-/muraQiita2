@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  include NotificationHandlers
+
   def create
     tip = Tip.find(params[:tip_id])
     comment = tip.comments.build(comment_params)
@@ -6,9 +8,7 @@ class CommentsController < ApplicationController
     if comment.save
       flash.notice = 'コメントが投稿されました'
       if !is_my_tip?(tip) 
-        notification = Notification.new()
-        notification.notify_comments = comment
-        notification.save
+        notify_comments(comment)
         PostMailer.notification_comment(tip.user, comment).deliver
       end
     else

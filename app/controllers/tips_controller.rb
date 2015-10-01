@@ -1,5 +1,6 @@
 class TipsController < ApplicationController
   before_action :set_tip, only: [:show]
+  include NotificationHandlers
 
   def index
     @tips = Tip.order(created_at: :desc)
@@ -40,6 +41,7 @@ class TipsController < ApplicationController
     end
     if @tip.update(tip_params)
       flash.notice = '記事を更新しました。'
+      notify_tip_update(@tip)
       redirect_to @tip
     else
       render :edit
