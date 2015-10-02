@@ -1,0 +1,10 @@
+- @title = 'Tag詳細'
+%h1= @title
+%h2= @tag.name
+- if user_signed_in?
+  - if @tag_follow.blank?
+    %div= button_to "フォローする", tag_tag_follows_path(tag_id: @tag.id)
+  - else
+    %div= button_to "フォローを取り消す", tag_tag_follows_path(tag_id: @tag.id), method: :delete
+  
+

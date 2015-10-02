@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :stocks, dependent: :destroy
   has_many :user_follows
+  has_many :tag_follows
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

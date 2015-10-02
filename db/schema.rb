@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001224715) do
+ActiveRecord::Schema.define(version: 20151002052718) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4,     null: false
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 20151001224715) do
 
   add_index "stocks", ["tip_id"], name: "index_stocks_on_tip_id", using: :btree
   add_index "stocks", ["user_id"], name: "index_stocks_on_user_id", using: :btree
+
+  create_table "tag_follows", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4, null: false
+    t.integer  "tag_id",     limit: 4, null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "tag_follows", ["tag_id"], name: "fk_rails_0deefe597f", using: :btree
+  add_index "tag_follows", ["user_id"], name: "fk_rails_ff9673621f", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",        limit: 4
@@ -117,5 +127,7 @@ ActiveRecord::Schema.define(version: 20151001224715) do
   add_foreign_key "notifications", "users"
   add_foreign_key "stocks", "tips"
   add_foreign_key "stocks", "users"
+  add_foreign_key "tag_follows", "tags"
+  add_foreign_key "tag_follows", "users"
   add_foreign_key "user_follows", "users", column: "follow_user"
 end
