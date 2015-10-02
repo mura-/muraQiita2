@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150929192207) do
-=======
-ActiveRecord::Schema.define(version: 20150927192633) do
->>>>>>> feature/5-stocks
+ActiveRecord::Schema.define(version: 20151001224715) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4,     null: false
@@ -28,7 +24,6 @@ ActiveRecord::Schema.define(version: 20150927192633) do
   add_index "comments", ["tip_id", "user_id"], name: "index_comments_on_tip_id_and_user_id", using: :btree
   add_index "comments", ["user_id"], name: "fk_rails_03de2dc08c", using: :btree
 
-<<<<<<< HEAD
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id",       limit: 4,                     null: false
     t.text     "content",       limit: 65535,                 null: false
@@ -40,8 +35,6 @@ ActiveRecord::Schema.define(version: 20150927192633) do
 
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
-=======
->>>>>>> feature/5-stocks
   create_table "stocks", force: :cascade do |t|
     t.integer  "user_id",    limit: 4, null: false
     t.integer  "tip_id",     limit: 4, null: false
@@ -80,6 +73,15 @@ ActiveRecord::Schema.define(version: 20150927192633) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "user_follows", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4, null: false
+    t.integer  "follow_user", limit: 4, null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "user_follows", ["follow_user"], name: "fk_rails_5c6108c2d1", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",          null: false
     t.string   "encrypted_password",     limit: 255, default: "",          null: false
@@ -112,10 +114,8 @@ ActiveRecord::Schema.define(version: 20150927192633) do
 
   add_foreign_key "comments", "tips"
   add_foreign_key "comments", "users"
-<<<<<<< HEAD
   add_foreign_key "notifications", "users"
-=======
->>>>>>> feature/5-stocks
   add_foreign_key "stocks", "tips"
   add_foreign_key "stocks", "users"
+  add_foreign_key "user_follows", "users", column: "follow_user"
 end

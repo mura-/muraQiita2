@@ -1,0 +1,7 @@
+- @title = 'ユーザー情報'
+%h1= @title
+%h2= @user.username
+- if @user_follow.blank?
+  %div= button_to "フォローする", user_user_follows_path(user_id: @user.id)
+- else 
+  %div= button_to "フォローを取り消す", user_user_follows_path(user_id: @user.id), method: :delete

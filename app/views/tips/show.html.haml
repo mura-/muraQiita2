@@ -7,9 +7,9 @@
 %div= markdown(@tip.content)
 - if user_signed_in?
   - if @stock.blank?
-    %div= button_to "ストックする", users_stocks_path(stock: {tip_id: @tip})
+    %div= button_to "ストックする", user_stocks_path(user_id: current_user, stock: {tip_id: @tip})
   - else
-    %div= button_to "ストックを取り消す", users_stock_path(@stock), method: :delete
+    %div= button_to "ストックを取り消す", user_stock_path(user_id: current_user,id: @stock), method: :delete
 = render 'comments/form'
 = render partial: 'comments/comment', collection: @comments
 
