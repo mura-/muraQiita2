@@ -1,0 +1,6 @@
+- @title = "フォローしているタグのTips一覧"
+%h1= @title
+
+= render partial: 'tip', collection: @tips
+
+= link_to "新規作成", new_tip_path

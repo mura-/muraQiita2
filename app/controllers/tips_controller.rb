@@ -66,6 +66,18 @@ class TipsController < ApplicationController
     @tips = Tip.tagged_with([params[:tag]], any: :true)
   end
 
+  def followed_tags_with
+    @tips = Tip.followed_tags_with(current_user)
+  end
+
+  def followed_users_with
+    @tips = Tip.followed_users_with(current_user)
+  end
+
+  def feed
+    @tips = Tip.followed_tags_with(current_user) | Tip.followed_users_with(current_user)
+  end
+
   private
   def set_tip
     @tip = Tip.find(params[:id])

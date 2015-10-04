@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resource  :user_follows, only: [ :create, :destroy ]
   end
 
+  get 'tips/followed_tags_with' => 'tips#followed_tags_with', as: :tips_followed_tags_with
+  get 'tips/followed_users_with' => 'tips#followed_users_with', as: :tips_followed_users_with
+  get 'tips/feed' => 'tips#feed', as: :tips_feed
   resources :tips do
     resources :comments, only: [ :create ]
   end

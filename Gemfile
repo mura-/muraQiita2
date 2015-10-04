@@ -35,5 +35,9 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'pry-rails' 
+  gem 'pry-doc'    # methodを表示
+  gem 'pry-byebug' # デバッグを実施(Ruby 2.0以降で動作する)
+  gem 'pry-stack_explorer' # スタックをたどれる
 end
 

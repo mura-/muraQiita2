@@ -18,4 +18,8 @@ class TagFollowsController < ApplicationController
     end
     redirect_to tag_path(params[:tag_id])
   end
+
+  def show_tips
+    
+  end
 end
