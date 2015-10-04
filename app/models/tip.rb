@@ -17,5 +17,10 @@ class Tip < ActiveRecord::Base
     user_ids = user.user_follows.pluck(:follow_user)
     Tip.where(user_id: user_ids).order(created_at: :desc)
   }
+  
+  scope :stocked, ->(user) {
+    tip_ids = user.stocks.pluck(:tip_id)
+    Tip.where(id: tip_ids)
+  }
 
 end

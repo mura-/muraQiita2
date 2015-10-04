@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :tips
   has_many :comments
   has_many :stocks, dependent: :destroy
+  has_many :tips
   has_many :user_follows
   has_many :tag_follows
 

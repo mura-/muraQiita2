@@ -1,0 +1,9 @@
+- @title = 'mypage'
+%h1= @title
+%h2= current_user.username
+
+%h2 投稿した記事
+= render partial: 'tips/tip', collection: @my_tips
+
+%h2 ストックした記事
+= render partial: 'tips/tip', collection: @stocked_tips
