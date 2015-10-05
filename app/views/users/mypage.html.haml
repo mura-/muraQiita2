@@ -7,3 +7,9 @@
 
 %h2 ストックした記事
 = render partial: 'tips/tip', collection: @stocked_tips
+
+%h2 フォロー中のタグ
+%ul
+  - @followed_tags.each do |tag|
+    %li= tag.name
+  

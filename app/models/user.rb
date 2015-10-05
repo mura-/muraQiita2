@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :tips
   has_many :user_follows
   has_many :tag_follows
+  has_many :tags, through: :tag_follows
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

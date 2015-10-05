@@ -7,5 +7,6 @@ class UsersController < ApplicationController
   def mypage
     @my_tips = current_user.tips
     @stocked_tips = Tip.stocked(current_user)
+    @followed_tags = current_user.tags
   end
 end
