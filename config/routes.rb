@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
 
+  get 'users/mypage' => 'users#mypage', as: :users_mypage
   resources :users, only: [ :show ] do
     resources :stocks, only: [ :create, :desroy]
     resource  :user_follows, only: [ :create, :destroy ]

@@ -1,0 +1,30 @@
+- @title = 'mypage'
+%h1= @title
+%h2= current_user.username
+
+%h2 投稿した記事
+= render partial: 'tips/tip', collection: @my_tips
+
+%h2 ストックした記事
+= render partial: 'tips/tip', collection: @stocked_tips
+
+%h2 フォロー中のタグ
+%ul
+  - @followed_tags.each do |tag|
+    %li= tag.name
+  
+%h2 フォロー中のユーザー
+%ul
+  - @follow_users.each do |user|
+    %li= user.username
+
+%h2 フォローされているユーザー
+%ul
+  - @followed_users.each do |user|
+    %li= user.username
+
+%h2 コメント
+%ul
+  - @comments.each do |comment|
+    %li= comment.content
+
