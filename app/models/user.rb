@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :user_follows
   has_many :tag_follows
   has_many :tags, through: :tag_follows
+  has_many :follow_users, through: :user_follows, class_name: 'User', source: :follow_user
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

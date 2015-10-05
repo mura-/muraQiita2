@@ -13,3 +13,12 @@
   - @followed_tags.each do |tag|
     %li= tag.name
   
+%h2 フォロー中のユーザー
+%ul
+  - @follow_users.each do |user|
+    %li= user.username
+
+%h2 フォローされているユーザー
+%ul
+  - @followed_users.each do |user|
+    %li= user.username
