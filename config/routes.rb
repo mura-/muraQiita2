@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'users/mypage' => 'users#mypage', as: :users_mypage
   resources :users, only: [ :show ] do
-    resources :stocks, only: [ :create, :desroy]
+    resources :stocks, only: [ :create, :destroy]
     resource  :user_follows, only: [ :create, :destroy ]
   end
 

@@ -1,14 +1,19 @@
 %header
-  %nav
-    - if user_signed_in?
-      %strong= link_to current_user.username, root_path
-      = link_to 'プロフィール変更', edit_user_registration_path
-      = link_to 'ログアウト', destroy_user_session_path, method: :delete
-    - else
-      = link_to 'サインアップ', new_user_registration_path
-      = link_to 'ログイン', new_user_session_path
-    - if user_signed_in?
-      %div.notify= link_to "新着通知 #{unread_notifications.count} 件", notifications_path
-    %p.notice= notice
-    %p.alert= alert
-
+  %nav.navbar.navbar-default.navbar-fixed-top
+    .navbar-header
+      .navbar-brand= link_to 'MuraQiita', root_path
+    %ul.nav.navbar-nav.navbar
+      %li.notice= notice
+      %li.alert= alert
+    %ul.nav.navbar-nav.navbar-right
+      - if user_signed_in?
+        %li= link_to current_user.username, users_mypage_path
+        %li= link_to 'プロフィール変更', edit_user_registration_path
+        %li= link_to 'ログアウト', destroy_user_session_path, method: :delete
+        %li.notify
+          = link_to notifications_path do
+            新着通知
+            %span.badge=unread_notifications.count
+      - else
+        %li= link_to 'サインアップ', new_user_registration_path
+        %li= link_to 'ログイン', new_user_session_path

@@ -16,4 +16,5 @@
 //= require marked
 //= require vue
 //= require_tree .
+//= require bootstrap-sprockets
 //= require bootstrap-tagsinput.min
