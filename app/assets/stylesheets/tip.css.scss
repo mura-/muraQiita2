@@ -1,0 +1,25 @@
+.tip {
+  .tip-header {
+    height: 150px;
+    right: 0;
+    left: 0;
+    color: white;
+    background-color: #5cb85c;
+    .tip-title {
+    }
+    .tip-stock {
+      margin-top: 50px;
+    }
+    .tip-info {
+      margin-top: 15px;
+    }
+  }
+  .tip-content {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid gray;
+  }
+  .tip-actions {
+    margin-top: 30px;
+  }
+}

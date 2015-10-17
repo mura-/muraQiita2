@@ -31,16 +31,28 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta2'
   gem 'spring-commands-rspec', '~> 1.0.1'
   gem 'capybara', '~> 2.2.1'
-  gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'factory_girl_rails'
   gem 'database_cleaner', '~> 1.2.0'
-end
 
-group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry-rails' 
   gem 'pry-doc'    # methodを表示
   gem 'pry-byebug' # デバッグを実施(Ruby 2.0以降で動作する)
   gem 'pry-stack_explorer' # スタックをたどれる
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
+  gem 'hirb'
+  gem 'hirb-unicode'
+
+  gem 'tapp'
+  gem 'awesome_print'
+  gem 'quiet_assets'
+  gem 'annotate', git: 'git://github.com/ctran/annotate_models.git'
+  gem 'timecop'
+  gem 'guard-rspec'
+  gem 'database_rewinder'
 end
 

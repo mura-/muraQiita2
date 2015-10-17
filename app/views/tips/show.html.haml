@@ -1,19 +1,28 @@
 - @title = 'tips詳細ページ'
+.tip
+  .tip-header.row
+    .tip-title.col-md-9
+      %h1= @tip.title
+      %div
+        - @tip.tag_list.each do |tag|
+          %span.label.label-primary= tag
+    .tip-stock.col-md-3
+      - if user_signed_in?
+        - if @stock.blank?
+          %div= button_to "ストックする", user_stocks_path(user_id: current_user, stock: {tip_id: @tip}), class: "btn btn-default"
+        - else
+          %div= button_to "ストックを取り消す", user_stock_path(current_user, @stock), method: :delete, class: "btn btn-danger"
+    .tip-info.col-md-12
+      = "#{@tip.user.username}が#{@tip.created_at}に作成しました"
+  .tip-content= markdown(@tip.content)
+  = render partial: 'comments/comment', collection: @comments
+  = render partial: 'comments/form', locals: { comment: @comment_form }
 
-%h1= @tip.title
-%div
-  - @tip.tag_list.each do |tag|
-    %span.label.label-primary= tag
-%div= markdown(@tip.content)
-- if user_signed_in?
-  - if @stock.blank?
-    %div= button_to "ストックする", user_stocks_path(user_id: current_user, stock: {tip_id: @tip})
-  - else
-    %div= button_to "ストックを取り消す", user_stock_path(current_user, @stock), method: :delete
-= render 'comments/form'
-= render partial: 'comments/comment', collection: @comments
-
-= link_to "tips一覧", tips_url
-= link_to "編集する", edit_tip_path
-- if is_my_tip?(@tip)
-  = link_to "削除する", @tip, method: :delete, data: { confirm: '本当に削除しますか?'}
+  .tip-actions
+    = link_to tips_url do
+      %i.btn.btn-default.glyphicon.glyphicon-align-justify tips一覧
+    = link_to edit_tip_path do
+      %i.btn.btn-default.glyphicon.glyphicon-pencil 編集する 
+    - if is_my_tip?(@tip)
+      = link_to @tip, method: :delete, data: { confirm: '本当に削除しますか?'} do
+        %i.glyphicon.glyphicon-remove.btn.btn-default 削除する 

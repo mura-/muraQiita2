@@ -9,7 +9,7 @@ class TipsController < ApplicationController
 
   def show
     @comments = @tip.comments
-    @comment = @tip.comments.build
+    @comment_form = Comment.new
     if user_signed_in?
       @stock = current_user.stocks.find_by(tip_id: @tip)
     end

@@ -1,3 +1,9 @@
-%div
-  %span.comment= markdown(comment.content.to_s)
+.comment.container
+  .comment-userinfo.clearfix
+    .comment-user.pull-left
+      =comment.user.username
+    .comment-postdate.pull-right
+      =comment.created_at
+  .comment-content.container
+    %span.comment= markdown(comment.content.to_s)
 

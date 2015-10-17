@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: d878a5b784ee0f703e9ee677bc0231dc24159512
+  specs:
+    annotate (2.6.10)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,7 +52,12 @@ GEM
     autoprefixer-rails (6.0.3)
       execjs
       json
+    awesome_print (1.6.1)
     bcrypt (3.1.10)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.5.1)
@@ -72,6 +85,7 @@ GEM
       activesupport (>= 3.0)
       deep_merge (~> 1.0.0)
     database_cleaner (1.2.0)
+    database_rewinder (0.5.3)
     debug_inspector (0.0.2)
     deep_merge (1.0.1)
     devise (3.5.2)
@@ -91,10 +105,26 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
+    ffi (1.9.10)
     font-awesome-sass (4.4.0)
       sass (>= 3.2)
+    formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    guard (2.13.0)
+      formatador (>= 0.2.4)
+      listen (>= 2.7, <= 4.0)
+      lumberjack (~> 1.0)
+      nenv (~> 0.1)
+      notiffany (~> 0.0)
+      pry (>= 0.9.12)
+      shellany (~> 0.0)
+      thor (>= 0.18.1)
+    guard-compat (1.2.1)
+    guard-rspec (4.6.4)
+      guard (~> 2.1)
+      guard-compat (~> 1.1)
+      rspec (>= 2.99.0, < 4.0)
     haml (4.0.7)
       tilt
     haml-rails (0.9.0)
@@ -104,6 +134,10 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
     hashie (3.4.2)
+    hirb (0.7.3)
+    hirb-unicode (0.0.5)
+      hirb (~> 0.5)
+      unicode-display_width (~> 0.1.1)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -119,8 +153,12 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     libv8 (3.16.14.11)
+    listen (3.0.3)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
+    lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     marked-rails (0.3.2.0)
@@ -130,8 +168,12 @@ GEM
     minitest (5.8.1)
     multi_json (1.11.2)
     mysql2 (0.3.20)
+    nenv (0.2.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    notiffany (0.0.8)
+      nenv (~> 0.1)
+      shellany (~> 0.0)
     oauth (0.4.7)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
@@ -158,6 +200,8 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -186,12 +230,19 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
+    rb-fsevent (0.9.6)
+    rb-inotify (0.9.5)
+      ffi (>= 0.5.0)
     rdoc (4.2.0)
       json (~> 1.4)
     redcarpet (3.3.3)
     ref (2.0.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rspec (3.0.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
     rspec-core (3.0.4)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.4)
@@ -221,6 +272,7 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     sexp_processor (4.6.0)
+    shellany (0.0.1)
     slop (3.6.0)
     spring (1.4.0)
     spring-commands-rspec (1.0.4)
@@ -231,12 +283,15 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    tapp (1.5.0)
+      thor
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    timecop (0.8.0)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -244,6 +299,7 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicode-display_width (0.1.1)
     vuejs-rails (0.12.12)
     warden (1.2.3)
       rack (>= 1.0)
@@ -262,19 +318,27 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import
   acts-as-taggable-on (~> 3.4)
+  annotate!
   autoprefixer-rails
+  awesome_print
   bcrypt (~> 3.1.7)
+  better_errors
+  binding_of_caller
   bootstrap-sass
   byebug
   capybara (~> 2.2.1)
   coffee-rails (~> 4.1.0)
   config
   database_cleaner (~> 1.2.0)
+  database_rewinder
   devise
   erb2haml
-  factory_girl_rails (~> 4.4.1)
+  factory_girl_rails
   font-awesome-sass
+  guard-rspec
   haml-rails
+  hirb
+  hirb-unicode
   jbuilder (~> 2.0)
   jquery-rails
   marked-rails
@@ -284,6 +348,7 @@ DEPENDENCIES
   pry-doc
   pry-rails
   pry-stack_explorer
+  quiet_assets
   rails (= 4.2.4)
   redcarpet
   rspec-rails (~> 3.0.0.beta2)
@@ -291,7 +356,9 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spring
   spring-commands-rspec (~> 1.0.1)
+  tapp
   therubyracer
+  timecop
   turbolinks
   uglifier (>= 1.3.0)
   vuejs-rails
