@@ -22,9 +22,9 @@ gem 'vuejs-rails'
 gem 'bootstrap-sass'
 gem 'marked-rails'
 gem 'activerecord-import'
-gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'autoprefixer-rails'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'

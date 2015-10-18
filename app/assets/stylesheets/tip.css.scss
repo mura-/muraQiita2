@@ -1,4 +1,4 @@
-.tip {
+.tip-show {
   .tip-header {
     height: 150px;
     right: 0;
@@ -13,6 +13,12 @@
     .tip-info {
       margin-top: 15px;
     }
+    .tip-tags {
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
   }
   .tip-content {
     margin-top: 30px;
@@ -21,5 +27,19 @@
   }
   .tip-actions {
     margin-top: 30px;
+  }
+}
+.tip {
+  margin-top: 15px;
+  border-bottom: solid 1px #afafaf;
+  h2 {
+    margin: 5px auto;
+  } 
+  .tip-tags {
+    margin-bottom: 15px;
+    a {
+      text-decoration: none;
+      color: white;
+    }
   }
 }

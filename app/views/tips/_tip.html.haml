@@ -1,4 +1,9 @@
-%div
-  %span.name= "#{tip.user.username}が#{time_ago_in_words (tip.created_at)}前に投稿しました"
-  %span.name= "が#{time_ago_in_words (tip.created_at)}前に投稿しました"
-  %span.title= link_to tip.title, tip_url(tip)
+.tip
+  %span.info
+    = link_to tip.user.username, user_path(tip.user.id)
+    = "が#{time_ago_in_words (tip.created_at)}前に投稿しました"
+  %h2= link_to tip.title, tip_path(tip)
+  .tip-tags
+    - tip.tags.each do |tag|
+      %span.label.label-primary= link_to tag.name, tag_path(tag)
+

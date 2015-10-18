@@ -22,3 +22,15 @@ User.create(
   username: 'テスト三郎',
   confirmed_at: Time.current
 )
+User.create(
+  email: 'test4@gmail.com',
+  password: 'password',
+  username: 'テスト四郎',
+  confirmed_at: Time.current
+)
+User.create(
+  email: 'test5@gmail.com',
+  password: 'password',
+  username: 'テスト五郎',
+  confirmed_at: Time.current
+)

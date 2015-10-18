@@ -1,6 +1,6 @@
 users = User.all
 
-10.times do |no|
+100.times do |no|
   user = users.sample
   Tip.create(
     title: "タイトル#{no}",

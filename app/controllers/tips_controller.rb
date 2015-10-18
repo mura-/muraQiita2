@@ -4,7 +4,7 @@ class TipsController < ApplicationController
   include NotificationHandlers
 
   def index
-    @tips = Tip.order(created_at: :desc)
+    @tips = Tip.page(params[:page]).order(created_at: :desc)
   end
 
   def show
