@@ -1,6 +1,5 @@
 - @title = '編集'
 
 %h1= @title
-
-= render 'form'
+= render partial: 'form', locals: { tip: @tip }
 = link_to '戻る', tip_path
