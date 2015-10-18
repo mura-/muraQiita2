@@ -43,3 +43,15 @@
     }
   }
 }
+
+.tip-form {
+  label[for="tip_tag_list"] {
+    display: block;
+  }
+  .bootstrap-tagsinput {
+    width: 100%;
+  }
+  .actions {
+    margin: 15px auto;
+  }
+}

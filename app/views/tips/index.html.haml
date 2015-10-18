@@ -1,8 +1,8 @@
 - @title = "Tips一覧"
 %h1=@title
-
 = page_entries_info @tips
-= render partial: 'tip', collection: @tips
+.container
+  = render partial: 'tip', collection: @tips
 
 .paginate
   = paginate @tips

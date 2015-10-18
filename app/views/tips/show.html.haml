@@ -1,12 +1,12 @@
 - @title = 'tips詳細ページ'
 .tip-show
   .tip-header.row
-    .tip-title.col-md-9
+    .tip-title.col-md-10
       %h1= @tip.title
       .tip-tags
         - @tip.tags.each do |tag|
           %span.label.label-primary= link_to tag.name, tag_path(tag)
-    .tip-stock.col-md-3
+    .tip-stock.col-md-2
       - if user_signed_in?
         - if @stock.blank?
           %div= button_to "ストックする", user_stocks_path(user_id: current_user, stock: {tip_id: @tip}), class: "btn btn-default"

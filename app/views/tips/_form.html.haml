@@ -1,17 +1,19 @@
-= form_for @tip do |f|
-  .errors
-    %ul
-      - @tip.errors.full_messages.each do |message|
-        %li= message
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :tag_list
-    = text_field_tag 'tip[tag_list]', @tip.tag_list.join(','), 'data-role' => 'tagsinput'
-  #editor.field
-    = f.label :content
-    = f.text_area :content, 'v-model' => 'input', 'debounce' => '300'
-    %div(v-html='input | marked')
-  .actions
-    = f.submit
+.tip-form
+  = form_for tip do |f|
+    .errors
+      %ul
+        - tip.errors.full_messages.each do |message|
+          %li= message
+    .field
+      = f.label :title, 'タイトル'
+      = f.text_field :title, class: 'form-control'
+    .field
+      = f.label :tag_list, 'タグ'
+      = text_field_tag 'tip[tag_list]', tip.tag_list.join(','), 'data-role' => 'tagsinput', class: 'form-control'
+    #editor.field.row
+      = f.label :content, '投稿内容', class: 'col-md-12'
+      .content-field.col-md-6
+        = f.text_area :content, 'v-model' => 'input', 'debounce' => '100', class: 'form-control', rows: '20'
+      .content-prev.col-md-6(v-html='input | marked')
+    .actions
+      = f.submit class: "btn btn-success"
