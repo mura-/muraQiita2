@@ -2,6 +2,11 @@
 %h1= @title
 %h2= @user.username
 - if @user_follow.blank?
-  %div= button_to "フォローする", user_user_follows_path(user_id: @user.id)
+  %div= button_to "フォローする", user_user_follows_path(@user), class: "btn btn-success"
 - else 
-  %div= button_to "フォローを取り消す", user_user_follows_path(user_id: @user.id), method: :delete
+  %div= button_to "フォローを取り消す", user_user_follows_path(@user), method: :delete, class: "btn btn-warning"
+= page_entries_info @tips
+.container
+  = render partial: 'tips/tip', collection: @tips
+.paginate
+  = paginate @tips

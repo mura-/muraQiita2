@@ -1,30 +1,62 @@
-- @title = 'mypage'
-%h1= @title
-%h2= current_user.username
+.mypage
+  - @title = 'mypage'
+  %h1= @title
+  %h2= current_user.username
 
-%h2 投稿した記事
-= render partial: 'tips/tip', collection: @my_tips
+  %h2 投稿した記事
+  .container
+    - if @my_tips.empty?
+      %span.nothing 記事はまだ投稿していません
+    - else
+      = render partial: 'tips/tip', collection: @my_tips
+      = link_to tips_mine_path do
+        %i.btn.btn-default.glyphicon.glyphicon-align-justify もっと見る
 
-%h2 ストックした記事
-= render partial: 'tips/tip', collection: @stocked_tips
+  %h2 ストックした記事
+  .container
+    - if @stocked_tips.empty?
+      %span.nothing 現在ストックしている記事はありません
+    - else 
+      = render partial: 'tips/tip', collection: @stocked_tips
+      = link_to tips_stocked_path do
+        %i.btn.btn-default.glyphicon.glyphicon-align-justify もっと見る
 
-%h2 フォロー中のタグ
-%ul
-  - @followed_tags.each do |tag|
-    %li= tag.name
-  
-%h2 フォロー中のユーザー
-%ul
-  - @follow_users.each do |user|
-    %li= user.username
+  %h2 フォロー中のタグ
+  .container
+    - if @followed_tags.empty?
+      %span.nothing 現在フォローしているタグはありません
+    - else 
+      - @followed_tags.each do |tag|
+        %span.label.label-primary= link_to tag.name, tag_path(tag)
+    
+  %h2 フォロー中のユーザー
+  .container
+    - if @follow_users.empty?
+      %span.nothing 現在フォローしているユーザーはいません
+    - else
+      %ul.list-inline
+        - @follow_users.each do |user|
+          %li
+            = link_to user_path(user.id) do
+              %i.btn.btn-default.glyphicon.glyphicon-user= user.username
 
-%h2 フォローされているユーザー
-%ul
-  - @followed_users.each do |user|
-    %li= user.username
+  %h2 フォローされているユーザー
+  .container
+    - if @followed_users.empty?
+      %span.nothing 現在どのユーザーからもフォローされていません
+    - else 
+      %ul
+        - @followed_users.each do |user|
+          %li
+            = link_to user_path(user.id) do
+              %i.btn.btn-default.glyphicon.glyphicon-user= user.username
 
-%h2 コメント
-%ul
-  - @comments.each do |comment|
-    %li= comment.content
+  %h2 コメント
+  .container
+    - if @comments.empty?
+      %span.nothing まだコメントはありません
+    - else
+      %ul
+      - @comments.each do |comment|
+        %li= comment.content
 

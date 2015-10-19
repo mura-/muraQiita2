@@ -2,9 +2,9 @@
 %h1= @title
 - if user_signed_in?
   - if @tag_follow.blank?
-    %div= button_to "フォローする", tag_tag_follows_path(tag_id: @tag.id), class: "btn btn-default"
+    %div= button_to "フォローする", tag_tag_follows_path(@tag), class: "btn btn-success"
   - else
-    %div= button_to "フォローを取り消す", tag_tag_follows_path(tag_id: @tag.id), method: :delete, class: "btn btn-danger"
+    %div= button_to "フォローを取り消す", tag_tag_follows_path(@tag), method: :delete, class: "btn btn-danger"
 = page_entries_info @tips
 .container
   = render partial: 'tips/tip', collection: @tips

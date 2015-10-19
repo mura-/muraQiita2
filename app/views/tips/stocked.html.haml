@@ -1,4 +1,4 @@
-- @title = "自分のtips一覧"
+- @title = "ストックしたtips一覧"
 %h1= @title
 
 = page_entries_info @tips
@@ -7,4 +7,3 @@
 
 .paginate
   = paginate @tips
-= link_to "新規作成", new_tip_path

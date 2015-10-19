@@ -60,23 +60,27 @@ class TipsController < ApplicationController
   end
 
   def mine
-    @tips = current_user.tips
+    @tips = current_user.tips.page(params[:page])
+  end
+
+  def stocked
+    @tips = Tip.page(params[:page]).stocked(current_user)
   end
 
   def find_by_tags
-    @tips = Tip.tagged_with([params[:tag]], any: :true)
+    @tips = Tip.page(params[:page]).tagged_with([params[:tag]], any: :true)
   end
 
   def followed_tags_with
-    @tips = Tip.followed_tags_with(current_user)
+    @tips = Tip.page(params[:page]).followed_tags_with(current_user)
   end
 
   def followed_users_with
-    @tips = Tip.followed_users_with(current_user)
+    @tips = Tip.page(params[:page]).followed_users_with(current_user)
   end
 
   def feed
-    @tips = Tip.followed_tags_with(current_user) | Tip.followed_users_with(current_user)
+    @tips = Tip.page(params[:page]).followed_tags_with(current_user) | Tip.followed_users_with(current_user)
   end
 
   private

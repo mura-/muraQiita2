@@ -1,6 +1,7 @@
 class UserFollowsController < ApplicationController
   def create
-    user_follow = current_user.user_follows.new(follow_user: params[:user_id])  
+    follow_user = User.find(params[:user_id])
+    user_follow = current_user.user_follows.new(follow_user: follow_user)  
     if user_follow.save
       flash.notice = 'ユーザーをフォローしました。'
     else

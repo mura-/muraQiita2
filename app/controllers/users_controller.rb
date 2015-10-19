@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :show ]
   def show
     @user = User.find(params[:id])
+    @tips = @user.tips.page(params[:page])
     @user_follow = current_user.user_follows.find_by(follow_user: params[:id]) if user_signed_in?
   end
 
