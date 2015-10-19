@@ -11,3 +11,8 @@ span.nothing {
   }
 }
 
+.login-form {
+  .field input:not([type="checkbox"]) {
+    width: 200px;
+  }
+}
