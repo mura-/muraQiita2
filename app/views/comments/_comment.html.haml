@@ -1,9 +1,9 @@
 .comment.container
   .comment-userinfo.clearfix
     .comment-user.pull-left
-      =comment.user.username
+      = link_to comment.user.username, user_path(comment.user)
     .comment-postdate.pull-right
-      =comment.created_at
+      = comment.created_at
   .comment-content.container
     %span.comment= markdown(comment.content.to_s)
 

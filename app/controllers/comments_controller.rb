@@ -9,7 +9,6 @@ class CommentsController < ApplicationController
       flash.notice = 'コメントが投稿されました'
       if !is_my_tip?(tip) 
         notify_comments(comment)
-        PostMailer.notification_comment(tip.user, comment).deliver
       end
     else
       flash.alert = 'コメントが投稿できませんでした。もう一度お試しください。'

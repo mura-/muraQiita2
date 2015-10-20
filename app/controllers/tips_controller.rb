@@ -80,7 +80,9 @@ class TipsController < ApplicationController
   end
 
   def feed
-    @tips = Tip.page(params[:page]).followed_tags_with(current_user) | Tip.followed_users_with(current_user)
+    tips = Tip.followed_tags_with(current_user) | Tip.followed_users_with(current_user)
+    # ActiveRecord::Rlation型に変換して格納する(ScopeでORの組み合わせをすると配列しか帰ってこなかった)
+    @tips = Tip.page(params[:page]).where(id: tips.map{ |tip| tip.id })
   end
 
   private

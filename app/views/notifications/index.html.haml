@@ -1,9 +1,11 @@
-- @title= '未読通知一覧'
-%h1= @title
+.notifications
+  - @title= '未読通知一覧'
+  %h1= @title
 
-- @notifications.each do |notification|
-  %div
-    %span= link_to notification.content, notification.reference_url
-    %span= button_to '既読にする', notification_path(notification), {method: :put, params: {"notification[is_checked]" => "true"}}
+  .container
+    - @notifications.each do |notification|
+      %div
+        %h4= link_to notification.content, notification.reference_url
+        %span= button_to '既読にする', notification_path(notification), {method: :put, params: {"notification[is_checked]" => "true"}, class: 'btn btn-default btn-sm'}
   
 

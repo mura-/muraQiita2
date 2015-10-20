@@ -38,25 +38,27 @@
         - @follow_users.each do |user|
           %li
             = link_to user_path(user.id) do
-              %i.btn.btn-default.glyphicon.glyphicon-user= user.username
+              %i.btn.btn-default.btn-sm.glyphicon.glyphicon-user= user.username
 
   %h2 フォローされているユーザー
   .container
     - if @followed_users.empty?
       %span.nothing 現在どのユーザーからもフォローされていません
     - else 
-      %ul
+      %ul.list-inline
         - @followed_users.each do |user|
           %li
             = link_to user_path(user.id) do
-              %i.btn.btn-default.glyphicon.glyphicon-user= user.username
+              %i.btn.btn-default.btn-sm.glyphicon.glyphicon-user= user.username
 
-  %h2 コメント
+  %h2 最近コメントがあった記事
   .container
     - if @comments.empty?
       %span.nothing まだコメントはありません
     - else
       %ul
       - @comments.each do |comment|
-        %li= comment.content
+        %li
+          = "#{comment.content} > "
+          = link_to comment.tip.title, tip_url(comment.tip)
 

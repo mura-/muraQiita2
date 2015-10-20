@@ -13,8 +13,10 @@
         - else
           %div= button_to "ストックを取り消す", user_stock_path(current_user, @stock), method: :delete, class: "btn btn-danger"
     .tip-info.col-md-12
-      = "#{@tip.user.username}が#{@tip.created_at}に作成しました"
+      = link_to @tip.user.username, user_path(@tip.user)
+      が#{@tip.created_at}に作成しました
   .tip-content= markdown(@tip.content)
+  %h3 コメント
   = render partial: 'comments/comment', collection: @comments
   = render partial: 'comments/form', locals: { comment: @comment_form }
 
