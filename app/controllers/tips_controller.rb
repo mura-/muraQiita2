@@ -67,10 +67,6 @@ class TipsController < ApplicationController
     @tips = Tip.page(params[:page]).stocked(current_user)
   end
 
-  def find_by_tags
-    @tips = Tip.page(params[:page]).tagged_with([params[:tag]], any: :true)
-  end
-
   def followed_tags_with
     @tips = Tip.page(params[:page]).followed_tags_with(current_user)
   end
