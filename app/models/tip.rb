@@ -7,7 +7,7 @@ class Tip < ActiveRecord::Base
   validates :title, presence: true
   validates :content, presence: true
 
-  default_scope ->{order(created_at: :desc)}
+  default_scope ->{order(created_at: :desc).includes(:tags)}
 
   scope :followed_tags_with, ->(user) {
     tag_ids = user.tag_follows.pluck(:tag_id)
