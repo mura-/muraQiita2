@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
   end
 
   def update
-    notification = Notification.find(params[:id])
+    notification = current_user.notifications.find(params[:id])
     notification.update(notification_params)
     redirect_to notifications_url
   end
