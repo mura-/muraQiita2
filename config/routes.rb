@@ -25,6 +25,5 @@ Rails.application.routes.draw do
     resource :tag_follows, only: [ :create, :destroy ]
   end
 
-  get 'find_by_tags/:tag' => 'tips#find_by_tags', as: :find_by_tags
   root "tops#index"
 end
