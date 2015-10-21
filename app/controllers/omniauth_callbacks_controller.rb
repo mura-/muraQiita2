@@ -1,10 +1,7 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_action :authenticate_user!
   def twitter
-    #@user = User.from_omniauth(request.env["omniauth.auth"]).except("extra")
     @user = User.from_omniauth(request.env["omniauth.auth"])
-    logger.debug "log: --------------"
-    logger.debug @user
 
     if @user.persisted?
       flash.notice = "ログインしました！"

@@ -9,7 +9,7 @@
       %span.nothing 記事はまだ投稿していません
     - else
       = render partial: 'tips/tip', collection: @my_tips
-      = link_to tips_mine_path do
+      = link_to mine_tips_path do
         %i.btn.btn-default.glyphicon.glyphicon-align-justify もっと見る
 
   %h2 ストックした記事
@@ -18,7 +18,7 @@
       %span.nothing 現在ストックしている記事はありません
     - else 
       = render partial: 'tips/tip', collection: @stocked_tips
-      = link_to tips_stocked_path do
+      = link_to stocked_tips_path do
         %i.btn.btn-default.glyphicon.glyphicon-align-justify もっと見る
 
   %h2 フォロー中のタグ

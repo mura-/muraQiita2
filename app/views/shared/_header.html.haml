@@ -7,7 +7,8 @@
       %li.alert= alert
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
-        %li= link_to current_user.username, users_mypage_path
+        %li= link_to 'Tips一覧', tips_path
+        %li= link_to 'MyPage', mypage_users_path
         %li= link_to 'プロフィール変更', edit_user_registration_path
         %li= link_to 'ログアウト', destroy_user_session_path, method: :delete
         %li.notify
@@ -15,5 +16,6 @@
             新着通知
             %span.badge=unread_notifications.count
       - else
+        %li= link_to 'Tips一覧', tips_path
         %li= link_to 'サインアップ', new_user_registration_path
         %li= link_to 'ログイン', new_user_session_path
