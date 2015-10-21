@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def unread_notifications
     if user_signed_in? 
-      Notification.unread_notifications(current_user)
+      current_user.notifications.unreads
     end
   end
   helper_method :unread_notifications

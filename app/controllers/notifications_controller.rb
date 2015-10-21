@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   def index
-    @notifications = Notification.unread_notifications(current_user)
+    @notifications = current_user.notifications.unreads
   end
 
   def update

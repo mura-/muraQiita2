@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :stocks, dependent: :destroy
   has_many :tips
   has_many :user_follows
   has_many :tag_follows
   has_many :tags, through: :tag_follows
   has_many :follow_users, through: :user_follows, class_name: 'User', source: :follow_user
+  has_many :notifications, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

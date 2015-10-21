@@ -1,5 +1,4 @@
 class Notification < ActiveRecord::Base
-  include Rails.application.routes.url_helpers
-
-  scope :unread_notifications, ->(user) { where(user_id: user, is_checked: false)}
+  belongs_to :user
+  scope :unreads, -> { where(is_checked: false)}
 end
