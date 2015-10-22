@@ -12,6 +12,10 @@
         %div
           Currently waiting confirmation for: #{resource.unconfirmed_email}
       .field
+        = f.label :username
+        %br/
+        = f.text_field :username
+      .field
         = f.label :password
         %i (パスワードを変更しない場合は空欄にしてください)
         %br/

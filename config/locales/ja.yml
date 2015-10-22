@@ -204,6 +204,7 @@ ja:
     attributes:
       user:
         name: 名前
+        username: ユーザー名
         password: パスワード
         password_confirmation: パスワード確認
         email: メールアドレス
