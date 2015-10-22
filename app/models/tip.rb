@@ -12,12 +12,12 @@ class Tip < ActiveRecord::Base
   scope :followed_tags_with, ->(user) {
     tag_ids = user.tag_follows.pluck(:tag_id)
     tags = Tag.where(id: tag_ids).pluck(:name)
-    Tip.tagged_with(tags, any: :true).order(created_at: :desc)
+    Tip.tagged_with(tags, any: :true)
   }
 
   scope :followed_users_with, ->(user) {
     user_ids = user.user_follows.pluck(:follow_user)
-    Tip.where(user_id: user_ids).order(created_at: :desc)
+    Tip.where(user_id: user_ids)
   }
   
   scope :stocked, ->(user) {

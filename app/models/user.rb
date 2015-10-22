@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
   has_many :follow_users, through: :user_follows, class_name: 'User', source: :follow_user
   has_many :notifications, dependent: :destroy
 
+  scope :followed_users, ->(user) {
+    followed_users_ids = UserFollow.where(follow_user: user).pluck(:user_id)
+    User.find(followed_users_ids)
+  }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

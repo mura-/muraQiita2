@@ -16,7 +16,6 @@ class TipsController < ApplicationController
   end
 
   def edit
-    # FIXME: DRYにかけないか？
     @tip = current_user.tips.find(params[:id])
   end
 
@@ -59,18 +58,22 @@ class TipsController < ApplicationController
     redirect_to tips_url
   end
 
+  # 自分が投稿したtips
   def mine
     @tips = current_user.tips.page(params[:page])
   end
 
+  # ストックしたtips
   def stocked
     @tips = Tip.page(params[:page]).stocked(current_user)
   end
 
+  # フォローしたタグのtips
   def followed_tags_with
     @tips = Tip.page(params[:page]).followed_tags_with(current_user)
   end
 
+  # フォローしたユーザーのtips
   def followed_users_with
     @tips = Tip.page(params[:page]).followed_users_with(current_user)
   end

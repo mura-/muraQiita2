@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     comment.user_id = current_user.id
     if comment.save
       flash.notice = 'コメントが投稿されました'
+      # 自分の記事でなければコメントがついたことを通知する
       if !is_my_tip?(tip) 
         notify_comments(comment)
       end
