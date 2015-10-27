@@ -1,6 +1,7 @@
 module NotificationHandlers
   extend ActiveSupport::Concern
 
+  ### このメソッドは、 Concern に切り分けるよりは CommentsController にあってもよいと思います。
   def notify_comments(comment)
     notification = Notification.new(
       user_id: comment.tip.user_id,
@@ -10,6 +11,7 @@ module NotificationHandlers
     notification.save
   end
 
+  ### このメソッドは、 Concern に切り分けるよりは StocksController にあってもよいと思います。
   def notify_stocks(stock)
     notification = Notification.new(
       user_id: stock.tip.user_id,
@@ -19,6 +21,7 @@ module NotificationHandlers
     notification.save
   end
 
+  ### このメソッドは、 Concern に切り分けるよりは StocksController にあってもよいと思います。
   def notify_tip_update(tip)
     notifications = []
     content = 'あなたがストックした記事が更新されました'
@@ -26,7 +29,7 @@ module NotificationHandlers
     tip.stocks.each do |stock|
       notifications << Notification.new(
         user_id: stock.user_id,
-        content: content, 
+        content: content,
         reference_url: reference_url)
     end
     Notification.import(notifications)

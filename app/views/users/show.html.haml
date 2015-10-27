@@ -1,9 +1,11 @@
 - @title = 'ユーザー情報'
 %h1= @title
 %h2= @user.username
+-### controller 側のレビューコメントにも書きましたが、User#followed? のようなメソッドを定義すれば
+-### @user_follow という変数も必要なくなり、より DRY なコードになると思いました.
 - if @user_follow.blank?
   %div= button_to "フォローする", user_user_follows_path(@user), class: "btn btn-success"
-- else 
+- else
   %div= button_to "フォローを取り消す", user_user_follows_path(@user), method: :delete, class: "btn btn-danger"
 = page_entries_info @tips
 .container

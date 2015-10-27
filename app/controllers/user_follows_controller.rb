@@ -1,7 +1,10 @@
 class UserFollowsController < ApplicationController
+  ### StocksController にもレビューコメントを書いたのですが、ユーザーのフォローの処理も
+  ### `remote: true` で実装してもよいかもしれませんね
+
   def create
     follow_user = User.find(params[:user_id])
-    user_follow = current_user.user_follows.new(follow_user: follow_user)  
+    user_follow = current_user.user_follows.new(follow_user: follow_user)
     if user_follow.save
       flash.notice = 'ユーザーをフォローしました。'
     else
@@ -11,7 +14,7 @@ class UserFollowsController < ApplicationController
   end
 
   def destroy
-    user_follow = current_user.user_follows.find_by(follow_user: params[:user_id])  
+    user_follow = current_user.user_follows.find_by(follow_user: params[:user_id])
     if user_follow.destroy
       flash.notice = 'ユーザーをアンフォローしました。'
     else

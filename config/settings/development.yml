@@ -1,0 +1,6 @@
+devise:
+  mail_address: soutetsu@gmail.com
+  mail_password: xxxxxxxx
+twitter:
+  app_id: 1
+  app_secret: xxxxxxxx
