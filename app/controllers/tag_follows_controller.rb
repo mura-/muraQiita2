@@ -1,5 +1,9 @@
 class TagFollowsController < ApplicationController
-  def create 
+
+  ### StocksController にもレビューコメントを書いたのですが、タグのフォロー・アンフォローの処理も
+  ### `remote: true` で実装してもよいかもしれませんね
+
+  def create
     tag_follow = current_user.tag_follows.new(tag_id: params[:tag_id])
     if tag_follow.save
       flash.notice = 'タグをフォローしました。'

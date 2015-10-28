@@ -1,5 +1,7 @@
 -@title = "#{@tag.name}を含むtips一覧"
 %h1= @title
+-### controller 側のレビューコメントにも書きましたが、User#following?(tag) のようなメソッドを定義すれば
+-### @tag_follow という変数も必要なくなり、より DRY なコードになると思いました.
 - if user_signed_in?
   - if @tag_follow.blank?
     %div= button_to "フォローする", tag_tag_follows_path(@tag), class: "btn btn-success"
@@ -11,5 +13,5 @@
 .paginate
   = paginate @tips
 
-  
+
 

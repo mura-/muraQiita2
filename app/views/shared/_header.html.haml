@@ -2,6 +2,8 @@
   %nav.navbar.navbar-default.navbar-fixed-top
     .navbar-header
       .navbar-brand= link_to 'MuraQiita', root_path
+    -### デザインの好みの問題かもしれませんが、ここにフラッシュメッセージを表示する領域がある事に違和感があります。
+    -### また、フラッシュメッセージがない場合は要素自体を表示しない方がよいとも思いました。
     %ul.nav.navbar-nav
       %li.notice= notice
       %li.alert= alert

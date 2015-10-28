@@ -4,12 +4,16 @@ class TipsController < ApplicationController
   include NotificationHandlers
 
   def index
+    ### default scope で `order(created_at: :desc)` が定義されているので、ここの `.order` は不要ですね
     @tips = Tip.page(params[:page]).order(created_at: :desc)
   end
 
   def show
     @comments = @tip.comments
     @comment_form = Comment.new
+    ### view 側でも user_signed_in? でストックされているかを判断しているので DRY ではありませんね
+    ### Stock モデルに任意のユーザーにストックされているかどうかを判断するメソッドを切り出せば、
+    ### @stock という変数も不要になり、以下三行は書かずに済みます
     if user_signed_in?
       @stock = current_user.stocks.find_by(tip_id: @tip)
     end
@@ -79,6 +83,14 @@ class TipsController < ApplicationController
   end
 
   def feed
+    ### feed を Active Record で表現するのは難しいですよね
+    ### 私も Qiita のコピーアプリをつくりましたが、やはりここで苦労しました
+    ### Kaminari は配列もページネイトできますので、複雑な Active Record のロジックを記述するよりは
+    ### フォローしているタグの Tip とフォローしているユーザーの Tip を配列化すると少し記述がシンプルになるかもしれません.
+    ### e.g.
+    ### tips = (Tip.followed_tags_with(current_user).to_a + Tip.followed_users_with(current_user).to_a).uniq
+    ### @tips = Kaminari.paginate_array(tips).page(params[:page])
+    ### できれば、tips を取得する処理もモデル側に記述したいところですね
     tips = Tip.followed_tags_with(current_user) | Tip.followed_users_with(current_user)
     # ActiveRecord::Rlation型に変換して格納する(ScopeでORの組み合わせをすると配列しか帰ってこなかった)
     @tips = Tip.page(params[:page]).where(id: tips.map{ |tip| tip.id })

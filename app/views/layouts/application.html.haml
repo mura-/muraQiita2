@@ -6,8 +6,9 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+    -### ここに `wrapper` という ID を付与している意図がよくわかりませんでした.
     #wrapper.container
       = render 'shared/header'
-      .container
-        = yield
-      = render 'shared/footer'
+    .container
+      = yield
+    = render 'shared/footer'

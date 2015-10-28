@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: [ :show ] do
+    ### 超細かいですが、ここだけ閉じカッコの前に空白がないのが気になりました
     resources :stocks, only: [ :create, :destroy]
     resource  :user_follows, only: [ :create, :destroy ]
     collection do
@@ -18,7 +19,9 @@ Rails.application.routes.draw do
       get 'feed'
       get 'mine'
       get 'stocked'
+      ### followed_tags_with のタイポですね
       get 'followd_tags_with'
+      ### followed_users_with のタイポですね
       get 'followd_users_with'
     end
   end

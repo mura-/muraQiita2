@@ -8,7 +8,15 @@
           %span.label.label-primary= link_to tag.name, tag_path(tag)
     .tip-stock.col-md-2
       - if user_signed_in?
+        -### controller 側でも書きましたが、この場合は tip が user によってストックされているかどうかを tip モデルに定義した方が
+        -### より DRY なコードになると思います。
+        -### - if @tip.stocked_by(current_user)
+        -###   ストックを取り消すボタンを表示
+        -### - else
+        -###   ストックするボタンを表示
+        -### みたいな感じでしょうか
         - if @stock.blank?
+          -### StocksController 側にもコメントしましたが、`remote: true` を使った書き方も知っておいた方が良いと思います。
           %div= button_to "ストックする", user_stocks_path(user_id: current_user, stock: {tip_id: @tip}), class: "btn btn-default"
         - else
           %div= button_to "ストックを取り消す", user_stock_path(current_user, @stock), method: :delete, class: "btn btn-danger"
@@ -25,6 +33,6 @@
       %i.btn.btn-default.glyphicon.glyphicon-align-justify tips一覧
     - if is_my_tip?(@tip)
       = link_to edit_tip_path do
-        %i.btn.btn-default.glyphicon.glyphicon-pencil 編集する 
+        %i.btn.btn-default.glyphicon.glyphicon-pencil 編集する
       = link_to @tip, method: :delete, data: { confirm: '本当に削除しますか?'} do
-        %i.glyphicon.glyphicon-remove.btn.btn-default 削除する 
+        %i.glyphicon.glyphicon-remove.btn.btn-default 削除する
